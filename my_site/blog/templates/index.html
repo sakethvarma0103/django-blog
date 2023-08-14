@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{%block title%}Saketh Varma{%endblock%}
+
+{%block css_files %} 
+<link rel="stylesheet" href= "{% static "post.css" %}">
+<link rel="stylesheet" href= "{% static "index.css" %}">
+
+{%endblock%}
+
+
+{%block content%}
+
+
+<section id="welcome">
+    <header>
+        <img src="{%static "images/me.jpg"%}" alt="Saketh">
+        <h2>Saketh's blog</h2>
+    </header>
+    <p>Hello all, welcome ,a basic django project using urls and views</p>
+</section>
+
+<section id="latest-posts">
+    <h2>My latest thoughts</h2>
+    <ul>
+        <ul>
+            {% for i in posts %}
+            {% include "include/post.html" %}
+            {% endfor %}
+        </ul>
+    </ul>
+</section>
+<section id="about">
+    <h2>What i do</h2>
+    <p>
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aspernatur nostrum debitis magni deserunt repellendus qui eum exercitationem veniam harum rem architecto libero accusantium, dolorum odio sequi tempora. Ut, temporibus facere!
+    </p>
+    <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore sequi, quos esse iste dicta tenetur ea eius eveniet saepe cumque praesentium similique libero neque repellendus inventore vel nesciunt! Excepturi, earum?
+    </p>
+</section>
+
+<section>
+</section>
+
+{%endblock%}
