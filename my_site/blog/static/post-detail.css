@@ -50,7 +50,10 @@ body {
   #summary time {
     font-weight: bold;
   } 
-  
+  .linkaddr{
+    color: white;
+    text-decoration: none;
+  }
   main {
     width: 90%;
     max-width: 90rem;

@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from datetime import date
+from .models import Post
 # Create your views here.
 all_posts = [
     {
@@ -71,20 +72,20 @@ def getdate(post):
     return post['date']
 
 def index(request):
-    sorted_posts=sorted(all_posts,key=getdate)
-    latest_posts=sorted_posts[-3:]
+    latest_posts=Post.objects.all().order_by("-date")[:3]
     return render(request,"index.html",{
         "posts":latest_posts
     })
 
 def posts(request):
+    all_posts=Post.objects.all()
     return render(request,"all-posts.html",{
         "all_posts":all_posts
     })
 
 
 def post_detail(request,slug):
-    identified_post=next(post for post in all_posts if post['slug']==slug)
+    identified_post=Post.objects.get(slug=slug)
     return render(request,"post-detail.html",{
         'post':identified_post
     })
